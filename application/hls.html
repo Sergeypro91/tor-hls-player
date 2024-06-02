@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+<!-- Or if you want the latest version from the main branch -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script> -->
+<video id="video" width="100%" controls crossorigin="anonymous" x-webkit-airplay="allow"></video>
+<script>
+  var video = document.getElementById('video');
+  var videoSrc = 'http://192.168.19.110:9000/test-bucket/streams/avc1.4d401f/master.m3u8';
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+
+    if (video) {
+      const source1 = document.createElement('source');
+      const source2 = document.createElement('source');
+
+      source1.type = 'application/x-mpegURL';
+      source1.src = videoSrc;
+      source2.type = 'video/mp4';
+
+      hls.attachMedia(source2);
+      video.appendChild(source1);
+      video.appendChild(source2);
+      video.disableRemotePlayback = false;
+    }
+  }
+    // HLS.js is not supported on platforms that do not have Media Source
+    // Extensions (MSE) enabled.
+    //
+    // When the browser has built-in HLS support (check using `canPlayType`),
+    // we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video
+    // element through the `src` property. This is using the built-in support
+  // of the plain video element, without using HLS.js.
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  }
+</script>

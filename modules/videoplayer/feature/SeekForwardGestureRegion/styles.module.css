@@ -1,0 +1,6 @@
+.seek-forward {
+    --local-width: 33%;
+
+    width: var(--local-width);
+    height: 100%;
+}

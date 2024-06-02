@@ -1,0 +1,76 @@
+.controls-container {
+    --opacity: 1;
+	--local-module: var(--module);
+
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: linear-gradient(to top, rgb(0, 0, 0, 0.5), transparent);
+    opacity: var(--opacity);
+    color: currentColor;
+	transition: all 300ms ease;
+
+	&:hover,
+	&:focus-within,
+	&[data-visible='true'] {
+		opacity: 1;
+	}
+
+	&[data-visible='false'] {
+		opacity: 0;
+
+		.playback-region,
+		.action-region {
+			pointer-events: none;
+		}
+	}
+}
+
+.gesture {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	z-index: 0;
+}
+
+.info {
+	height: 100%;
+}
+
+.playback,
+.actions {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	z-index: 1;
+}
+
+.playback {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	margin-inline: calc(var(--local-module) * 4) ;
+	gap: var(--local-module);
+
+	.playback-header {
+		&>*:first-child:after {
+			content: '/';
+			margin-inline: calc(var(--local-module) * 2);
+		}
+	}
+}
+
+.separator {
+	flex: 1 100%;
+}
+
+

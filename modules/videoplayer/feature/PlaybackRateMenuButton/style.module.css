@@ -1,0 +1,7 @@
+.rate {
+    color: currentColor;
+}
+
+.rate[data-state='active'] {
+    background-color: color-mix(in srgb, white 50%, transparent);
+}

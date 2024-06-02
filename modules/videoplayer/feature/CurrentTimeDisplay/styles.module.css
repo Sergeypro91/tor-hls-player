@@ -1,0 +1,6 @@
+.current-time-display {
+	--local-h5--fs: var(--h5-fs);
+
+	color: currentColor;
+	font-size: var(--local-h5--fs);
+}

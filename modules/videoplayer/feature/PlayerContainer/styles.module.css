@@ -1,0 +1,9 @@
+.player-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: #000;
+}
